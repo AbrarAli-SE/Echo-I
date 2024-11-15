@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundgradient"
+    android:padding="24dp">
+
+    <!-- Title Text: AI Buddy -->
+    <TextView
+
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Echo-I"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- Hamburger Menu Icon -->
+    <ImageView
+        android:id="@+id/menu_icon"
+        android:layout_width="40dp"
+        android:padding="7dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/menu"
+        android:background="@drawable/manubackground"
+        android:contentDescription="Menu Icon" />
+
+    <!-- Greeting Text -->
+    <TextView
+        android:id="@+id/greeting_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/gradientcolortextbackground"
+        android:padding="8dp"
+        android:text="Hey, Ali"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <!-- Center Character Icon -->
+    <ImageView
+        android:id="@+id/character_icon"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_marginTop="250dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ai"
+        android:contentDescription="Character Icon" />
+
+    <!-- Welcome Text -->
+    <TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/character_icon"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Welcome Back"
+        android:textColor="#7A7A7A"
+        android:textSize="18sp" />
+
+    <!-- Help Text -->
+    <TextView
+        android:id="@+id/help_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcome_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:text="How Can I Help You Today?"
+        android:textColor="#000000"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <!-- Bottom Entry Bar with Voice and Keyboard Buttons -->
+    <LinearLayout
+        android:id="@+id/entry_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal"
+        android:background="@drawable/manubackground"
+        android:padding="8dp">
+
+        <!-- Voice Button -->
+        <ImageButton
+            android:id="@+id/voice_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/mic"
+            android:contentDescription="Voice Button"
+            app:tint="#7F58FF" />
+
+        <!-- Entry Text (Placeholder for User Input) -->
+        <TextView
+            android:id="@+id/entry_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="16dp"
+            android:text="Type something..."
+            android:textColor="#7A7A7A"
+            android:textSize="16sp"
+            android:gravity="center_vertical"
+            android:background="@android:color/transparent" />
+
+        <!-- Keyboard Button -->
+        <ImageButton
+            android:id="@+id/keyboard_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/keyboard"
+            android:contentDescription="Keyboard Button"
+            app:tint="#000000" />
+    </LinearLayout>
+
+</RelativeLayout>
