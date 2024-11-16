@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_layout"
     android:background="@drawable/backgroundgradient"
     android:padding="24dp">
 
@@ -15,8 +16,7 @@
         android:text="Echo-I"
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-medium" />
+        android:textSize="24sp" />
 
     <!-- Hamburger Menu Icon -->
     <ImageView
@@ -28,7 +28,8 @@
         android:padding="7dp"
         android:src="@drawable/menu"
         android:background="@drawable/manubackground"
-        android:contentDescription="Menu Icon" />
+        android:contentDescription="Menu Icon"
+        android:elevation="4dp" />
 
     <!-- Greeting Text -->
     <TextView
@@ -36,14 +37,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="225dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="21dp"
         android:background="@drawable/gradientcolortextbackground"
         android:padding="8dp"
-        android:text="Hey, Ali"
+        android:text=" Hiii, Ali "
         android:textColor="#FFFFFF"
         android:textStyle="bold"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:elevation="4dp" />
 
     <!-- Center Character Icon -->
     <ImageView
@@ -52,7 +54,8 @@
         android:layout_height="250dp"
         android:layout_centerInParent="true"
         android:src="@drawable/ai"
-        android:contentDescription="Character Icon" />
+        android:contentDescription="Character Icon"/>
+
 
     <!-- Welcome Text -->
     <TextView
@@ -64,7 +67,8 @@
         android:layout_marginTop="16dp"
         android:text="Welcome Back"
         android:textColor="#7A7A7A"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:elevation="4dp" />
 
     <!-- Help Text -->
     <TextView
@@ -73,26 +77,26 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/welcome_text"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
         android:text="How Can I Help You Today?"
         android:textColor="#000000"
         android:textStyle="bold"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:elevation="4dp" />
 
     <!-- Bottom Entry Bar with Voice and Keyboard Buttons -->
     <LinearLayout
         android:id="@+id/entry_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="54dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="2dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginHorizontal="1dp"
+        android:layout_marginBottom="40dp"
         android:orientation="horizontal"
         android:background="@drawable/manubackground"
-        android:padding="8dp">
+        android:padding="4dp"
+        android:elevation="4dp">
 
         <!-- Voice Button -->
-
         <ImageButton
             android:id="@+id/keyboard_button"
             android:layout_width="48dp"
@@ -100,7 +104,8 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/keyboard"
             android:contentDescription="Keyboard Button"
-            app:tint="#000000" />
+            app:tint="#000000"
+            android:elevation="2dp" />
 
         <!-- Editable Input Field -->
         <EditText
@@ -114,7 +119,10 @@
             android:textColor="#000000"
             android:textColorHint="#7A7A7A"
             android:textSize="16sp"
-            android:background="@android:color/transparent" />
+            android:background="@android:color/transparent"
+            android:elevation="2dp" />
+
+        <!-- Voice Button -->
         <ImageButton
             android:id="@+id/voice_button"
             android:layout_width="48dp"
@@ -122,10 +130,18 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:src="@drawable/mic"
             android:contentDescription="Voice Button"
-            app:tint="#7F58FF" />
-
-        <!-- Keyboard Button -->
-
+            app:tint="#7F58FF"
+            android:elevation="2dp" />
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/tap_to_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/entry_bar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-35dp"
+        android:text="Tap to Talk"
+        android:textColor="#7A7A7A"
+        android:textSize="18sp"
+        android:elevation="4dp" />
 </RelativeLayout>
