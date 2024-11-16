@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroundgradient"
+    android:background="@drawable/cr60bffffff"
     android:padding="16dp">
 
     <!-- Back Button -->
@@ -11,8 +11,8 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="8dp"
-        android:src="@drawable/menu"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/baseline_arrow_back_ios_new_24"
         android:contentDescription="Back" />
 
     <!-- App Title -->
@@ -23,21 +23,22 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="14dp"
         android:text="Echo-I"
-        android:textColor="#FFFFFF"
+        android:textColor="#949292"
         android:textStyle="bold"
-        android:textSize="24sp"
-        android:fontFamily="sans-serif-medium" />
+        android:textSize="24sp"/>
 
     <!-- Chat Recycler View -->
     <androidx.recyclerview.widget.RecyclerView
+        android:padding="10dp"
         android:id="@+id/chat_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_above="@id/input_layout"
         android:layout_below="@id/title_text"
         android:layout_marginTop="16dp"
-        android:paddingBottom="8dp" />
-
+        android:paddingBottom="8dp"
+        android:background="@drawable/rounded_recycler_background"
+        android:elevation="4dp"/>
 
     <!-- Input Layout -->
     <LinearLayout
@@ -47,7 +48,10 @@
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:background="@drawable/manubackground"
-        android:padding="8dp">
+        android:padding="2dp"
+        android:elevation="4dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical">
 
         <EditText
             android:id="@+id/input_message"
@@ -55,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:hint="Ask Something Else"
-            android:background="@android:color/transparent"
+            android:background="@drawable/rounded_input_background"
             android:textColor="@android:color/black"
             android:padding="8dp"
             android:inputType="text" />
@@ -66,8 +70,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:src="@drawable/mic"
-            android:backgroundTint="@color/black"
             android:contentDescription="Send"
-            android:background="@android:color/transparent" />
+            android:background="@drawable/rounded_button_background"
+            android:elevation="2dp"
+            android:padding="4dp"
+            android:scaleX="0.7"
+            android:scaleY="0.7"/>
+
     </LinearLayout>
+
 </RelativeLayout>

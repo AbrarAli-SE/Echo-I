@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/cr60b7a5bfe"
-        android:padding="16dp"
+        android:background="@drawable/sent_message_background"
+        android:padding="12dp"
         android:orientation="vertical"
         android:layout_marginEnd="8dp">
 
@@ -32,6 +32,8 @@
         android:src="@drawable/abraralipic"
         android:contentDescription="User Picture"
         android:scaleType="centerCrop"
-        android:background="@drawable/cr60bffffff"/>
+        android:background="@drawable/circular_image_background"
+        android:clipToOutline="true"
+        android:layout_gravity="center"/>
 
 </LinearLayout>
