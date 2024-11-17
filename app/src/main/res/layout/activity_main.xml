@@ -42,6 +42,7 @@
         android:background="@drawable/gradientcolortextbackground"
         android:padding="8dp"
         android:text=" Hiii, Ali "
+
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:textSize="16sp"
