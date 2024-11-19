@@ -87,53 +87,42 @@
     <!-- Bottom Entry Bar with Voice and Keyboard Buttons -->
     <LinearLayout
         android:id="@+id/entry_bar"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_marginHorizontal="1dp"
         android:layout_marginBottom="40dp"
         android:orientation="horizontal"
-        android:background="@drawable/manubackground"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/toggle_background"
         android:padding="4dp"
         android:elevation="4dp">
 
         <!-- Voice Button -->
         <ImageButton
-            android:id="@+id/keyboard_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/keyboard"
-            android:contentDescription="Keyboard Button"
-            app:tint="#000000"
-            android:elevation="2dp" />
-
-        <!-- Editable Input Field -->
-        <EditText
-            android:id="@+id/message_input"
+            android:id="@+id/voice_button"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:hint="Type something..."
-            android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:textColor="#000000"
-            android:textColorHint="#7A7A7A"
-            android:textSize="16sp"
-            android:background="@android:color/transparent"
-            android:elevation="2dp" />
-
-        <!-- Voice Button -->
-        <ImageButton
-            android:id="@+id/voice_button"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:background="@drawable/cr60b7a5bfe"
             android:src="@drawable/mic"
             android:contentDescription="Voice Button"
-            app:tint="#7F58FF"
+            android:padding="8dp"
+            android:elevation="2dp" />
+
+        <!-- Keyboard Button -->
+        <ImageButton
+            android:id="@+id/keyboard_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/toggle_right_background"
+            android:src="@drawable/keyboard"
+            android:contentDescription="Keyboard Button"
+            android:padding="8dp"
             android:elevation="2dp" />
     </LinearLayout>
+
     <TextView
         android:id="@+id/tap_to_text"
         android:layout_width="wrap_content"

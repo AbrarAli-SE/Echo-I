@@ -6,5 +6,9 @@
     <color name="startColor">#8EC5FC</color>
     <color name="centerColor">#E0C3FC</color>
     <color name="endColor">#FCD1D1</color>
+    <color name="blur_background">#80FFFFFF</color>
+    <color name="red">#FF0000</color>
+    <color name="original_button_color">#7F58FF</color>
+
 
 </resources>

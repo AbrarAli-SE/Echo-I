@@ -15,6 +15,9 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Access API Key
+        buildConfigField "String", "OPENAI_API_KEY", "\"${project.OPENAI_API_KEY}\""
     }
 
     buildTypes {
@@ -24,6 +27,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField "String", "OPENAI_API_KEY", "\"${project.OPENAI_API_KEY}\""
+        }
+        debug {
+            buildConfigField "String", "OPENAI_API_KEY", "\"${project.OPENAI_API_KEY}\""
         }
     }
     compileOptions {

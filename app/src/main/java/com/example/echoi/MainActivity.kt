@@ -9,6 +9,7 @@ import android.content.Intent
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
@@ -71,9 +72,23 @@ class MainActivity : AppCompatActivity() {
         colorAnimator.start()
         rootView.background = layerDrawable
 
-        // Set OnClickListener to the voice button to navigate to ChattingActivity
+        // Set OnClickListener to the voice button to navigate to VoiceInputActivity with try-catch
         val voiceButton: ImageButton = findViewById(R.id.voice_button)
         voiceButton.setOnClickListener {
+            try {
+                Log.d("MainActivity", "Voice button clicked")
+                val intent = Intent(this, VoiceInputActivity::class.java)
+                startActivity(intent)
+                Log.d("MainActivity", "Navigated to VoiceInputActivity")
+            } catch (e: Exception) {
+                Log.e("MainActivity", "Error navigating to VoiceInputActivity: ${e.message}", e)
+            }
+        }
+
+        // Set OnClickListener to the keyboard button to navigate to ChattingActivity
+        val keyboardButton: ImageButton = findViewById(R.id.keyboard_button)
+        keyboardButton.setOnClickListener {
+            Log.d("MainActivity", "Keyboard button clicked")
             val intent = Intent(this, ChattingActivity::class.java)
             startActivity(intent)
         }
