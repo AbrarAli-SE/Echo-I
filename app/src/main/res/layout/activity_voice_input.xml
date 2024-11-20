@@ -69,6 +69,7 @@
         android:textColor="@android:color/black"
         />
 
+
     <!-- Tap to Speak Button -->
     <Button
         android:id="@+id/voice_input_button"

@@ -43,6 +43,7 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         apiClient = ApiClient()
         textToSpeech = TextToSpeech(this, this)
 
+
         // Initialize SpeechRecognizer
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this)
         speechRecognizer.setRecognitionListener(object : RecognitionListener {
