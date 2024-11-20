@@ -2,6 +2,7 @@ package com.example.echoi
 
 import android.Manifest
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -42,7 +43,6 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         apiClient = ApiClient()
         textToSpeech = TextToSpeech(this, this)
-
 
         // Initialize SpeechRecognizer
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this)
@@ -105,6 +105,7 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         resetToInitialState()
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun resetToInitialState() {
         // Initial state setup
         liveText.text = ""
@@ -113,10 +114,11 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         listeningEffectContainer.visibility = View.VISIBLE
         stopAnimation()
         voiceInputButton.text = "Tap to Speak"
-        voiceInputButton.setBackgroundColor(ContextCompat.getColor(this, R.color.original_button_color))
+        voiceInputButton.setBackgroundColor(ContextCompat.getColor(this, R.color.button_color))
         isListening = false
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun startListening() {
         // Show listening animation and blur background
         blurBackground.visibility = View.VISIBLE
@@ -124,7 +126,7 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         // Update button to cancel
         voiceInputButton.text = "Cancel"
-        voiceInputButton.setBackgroundResource(R.drawable.voice_button_background) // Set button color to red with rounded edges
+        voiceInputButton.setBackgroundColor(ContextCompat.getColor(this, R.color.red))
 
         // Start speech recognition
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH).apply {
@@ -182,21 +184,22 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         // Reset view scales
         for (i in 0 until listeningEffectContainer.childCount) {
             val view = listeningEffectContainer.getChildAt(i)
-            view.scaleY = 1.0f
+            view.animate().scaleY(1.0f).setDuration(0).start() // Reset scale to default instantly
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun resetButtonState() {
         // Update button to tap to speak
         voiceInputButton.text = "Tap to Speak"
-        voiceInputButton.setBackgroundColor(ContextCompat.getColor(this, R.color.original_button_color)) // Reset button color
+        voiceInputButton.setBackgroundColor(ContextCompat.getColor(this, R.color.button_color))
     }
 
     private fun sendTextToApi(text: String) {
         apiClient.sendTextToApi(text) { responseText ->
             runOnUiThread {
                 liveText.text = responseText ?: "Error processing request."
-                textToSpeech.speak(responseText, TextToSpeech.QUEUE_FLUSH, null, null)
+                textToSpeech.speak(responseText, TextToSpeech.QUEUE_FLUSH, null, "tts1")
             }
         }
     }
@@ -212,6 +215,14 @@ class VoiceInputActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onInit(status: Int) {
         if (status == TextToSpeech.SUCCESS) {
             textToSpeech.language = Locale.US
+            textToSpeech.setOnUtteranceCompletedListener { utteranceId ->
+                if (utteranceId == "tts1") {
+                    runOnUiThread {
+                        stopAnimation()
+                        liveText.text = "Press 'Tap to Speak' to continue..."
+                    }
+                }
+            }
         }
     }
 }

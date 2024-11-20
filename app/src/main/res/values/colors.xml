@@ -6,9 +6,15 @@
     <color name="startColor">#8EC5FC</color>
     <color name="centerColor">#E0C3FC</color>
     <color name="endColor">#FCD1D1</color>
-    <color name="blur_background">#80FFFFFF</color>
     <color name="red">#FF0000</color>
-    <color name="original_button_color">#7F58FF</color>
+        <color name="background_color">#F5F5F5</color>
+        <color name="blur_background">#B3E5FC</color>
+        <color name="bar_color">#095FD5</color>
+        <color name="text_color">#212121</color>
+    <color name="button_color">#3F51B5</color>
+        <color name="button_pressed_color">#0288D1</color>
+        <color name="cancel_button_color">#F44336</color> <!-- Cancel button color (red) -->
 
 
 </resources>
+

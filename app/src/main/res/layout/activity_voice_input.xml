@@ -2,18 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    tools:targetApi="34"> <!-- Set the API level for preview -->
+    android:background="@drawable/gradient_background"
+    tools:context=".VoiceInputActivity">
 
     <!-- Blurred Background Effect for Listening -->
     <View
         android:id="@+id/blur_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="50dp"
-        android:background="@color/blur_background"
-
-        />
+        android:background="@drawable/gradient_background"
+        android:visibility="gone"/>
 
     <!-- Animated Listening Effect -->
     <LinearLayout
@@ -21,39 +19,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:padding="15dp"
         android:layout_marginTop="200dp"
-        android:gravity="center_vertical"
         android:orientation="horizontal"
-        >
+        android:gravity="center_vertical">
 
         <View
-            android:id="@+id/bar1"
             android:layout_width="25dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:background="@drawable/bar_shape" />
+            android:background="@drawable/bar_shape"/>
 
         <View
-            android:id="@+id/bar2"
             android:layout_width="25dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:background="@drawable/bar_shape" />
+            android:background="@drawable/bar_shape"/>
 
         <View
-            android:id="@+id/bar3"
             android:layout_width="25dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:background="@drawable/bar_shape" />
+            android:background="@drawable/bar_shape"/>
 
         <View
-            android:id="@+id/bar4"
             android:layout_width="25dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:background="@drawable/bar_shape" />
+            android:background="@drawable/bar_shape"/>
     </LinearLayout>
 
     <!-- Live Text Conversion -->
@@ -66,9 +58,9 @@
         android:layout_marginTop="20dp"
         android:text="Speak now..."
         android:textSize="18sp"
-        android:textColor="@android:color/black"
-        />
-
+        android:textColor="@color/text_color"
+        android:typeface="sans"
+        android:fontFamily="sans-serif-medium"/>
 
     <!-- Tap to Speak Button -->
     <Button
@@ -78,8 +70,9 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/voice_button_background"
+        android:backgroundTint="#3F51B5"
         android:text="Tap to Speak"
         android:textColor="@android:color/white"
-        android:padding="16dp" />
+        android:elevation="4dp"
+        android:padding="16dp"/>
 </RelativeLayout>
