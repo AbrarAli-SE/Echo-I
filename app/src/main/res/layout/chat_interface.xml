@@ -1,44 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/cr60bffffff"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <!-- Back Button -->
-    <ImageView
-        android:id="@+id/back_button"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="12dp"
-        android:src="@drawable/baseline_arrow_back_ios_new_24"
-        android:contentDescription="Back" />
-
-    <!-- App Title -->
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
+    <!-- Header Layout -->
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="Echo-I"
-        android:textColor="#949292"
-        android:textStyle="bold"
-        android:textSize="24sp"/>
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="8dp"
+        android:background="@drawable/gradient_background"
+        android:elevation="2dp">
+
+        <!-- Menu Icon -->
+        <ImageView
+            android:id="@+id/menu_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/dots"
+            android:contentDescription="Menu" />
+
+        <!-- Profile Picture -->
+
+        <ImageView
+            android:id="@+id/userPicture"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/abraralipic"
+            android:contentDescription="User Picture"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circular_image_background"
+            android:clipToOutline="true"
+            android:layout_gravity="center" />
+
+        <!-- App Title -->
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Abrar Ali"
+            android:textColor="#949292"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <!-- Chat Recycler View -->
     <androidx.recyclerview.widget.RecyclerView
-        android:padding="10dp"
         android:id="@+id/chat_recycler_view"
         android:layout_width="match_parent"
+        android:layout_margin="16dp"
         android:layout_height="0dp"
         android:layout_above="@id/input_layout"
-        android:layout_below="@id/title_text"
-        android:layout_marginTop="16dp"
-        android:paddingBottom="8dp"
-        android:background="@drawable/rounded_recycler_background"
-        android:elevation="4dp"/>
+        android:layout_below="@id/header_layout"
+        android:padding="10dp"
+        android:background="@android:color/transparent" />
 
     <!-- Input Layout -->
     <LinearLayout
@@ -47,10 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:background="@drawable/manubackground"
-        android:padding="2dp"
+        android:background="#00FFFFFF"
+        android:padding="10dp"
         android:elevation="4dp"
-        android:layout_marginTop="8dp"
         android:gravity="center_vertical">
 
         <EditText
@@ -61,21 +78,21 @@
             android:hint="Ask Something Else"
             android:background="@drawable/rounded_input_background"
             android:textColor="@android:color/black"
-            android:padding="8dp"
+            android:padding="12dp"
             android:inputType="text" />
 
         <ImageButton
             android:id="@+id/send_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/mic"
             android:contentDescription="Send"
             android:background="@drawable/rounded_button_background"
             android:elevation="2dp"
-            android:padding="4dp"
-            android:scaleX="0.7"
-            android:scaleY="0.7"/>
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            app:tint="#1D3650" /> <!-- Ensure the icon is well-centered and scaled within the button -->
 
     </LinearLayout>
 
