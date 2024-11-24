@@ -16,7 +16,7 @@
 
         <!-- Sent Message Text -->
         <TextView
-            android:id="@+id/sentMessageText"
+            android:id="@+id/message_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Sent message"
@@ -35,5 +35,4 @@
         android:background="@drawable/circular_image_background"
         android:clipToOutline="true"
         android:layout_gravity="center"/>
-
 </LinearLayout>
