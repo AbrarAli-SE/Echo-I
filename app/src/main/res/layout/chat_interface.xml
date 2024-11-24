@@ -23,7 +23,6 @@
             android:contentDescription="Menu" />
 
         <!-- Profile Picture -->
-
         <ImageView
             android:id="@+id/userPicture"
             android:layout_width="40dp"
@@ -51,12 +50,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chat_recycler_view"
         android:layout_width="match_parent"
-        android:layout_margin="16dp"
         android:layout_height="0dp"
         android:layout_above="@id/input_layout"
         android:layout_below="@id/header_layout"
         android:padding="10dp"
         android:background="@android:color/transparent" />
+
+    <!-- Listening Status TextView -->
+    <TextView
+        android:id="@+id/listening_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/input_message"
+        android:layout_centerHorizontal="true"
+        android:padding="8dp"
+        android:text="Listening..."
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone"
+        android:textSize="16sp" />
 
     <!-- Input Layout -->
     <LinearLayout
@@ -87,13 +98,11 @@
             android:layout_height="45dp"
             android:layout_marginStart="8dp"
             android:src="@drawable/mic"
-            android:contentDescription="Send"
-            android:background="@drawable/rounded_button_background"
-            android:elevation="2dp"
-            android:padding="10dp"
-            android:scaleType="centerInside"
-            app:tint="#1D3650" /> <!-- Ensure the icon is well-centered and scaled within the button -->
-
+        android:contentDescription="Send"
+        android:background="@drawable/rounded_button_background"
+        android:elevation="2dp"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        app:tint="#1D3650" />
     </LinearLayout>
-
 </RelativeLayout>
