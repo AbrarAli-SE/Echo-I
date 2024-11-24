@@ -49,6 +49,7 @@ dependencies {
 
     // Gson for JSON parsing
     implementation (libs.gson)
+    implementation(libs.androidx.datastore.core.android)
 
     // Other dependencies
     testImplementation(libs.junit)
