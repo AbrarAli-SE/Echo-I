@@ -3,15 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:background="@color/white">
+    android:background="@drawable/gradient_background">
 
-    <TextView
-        android:id="@+id/splash_text"
+    <ImageView
+        android:id="@+id/splash_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Echo I by Ali"
-        android:textSize="40sp"
-        android:textColor="@android:color/black"
-        android:fontFamily="@font/cursive_font" />
-
+        android:src="@drawable/splash_text" />
 </RelativeLayout>
