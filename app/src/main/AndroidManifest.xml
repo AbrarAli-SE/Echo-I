@@ -20,12 +20,14 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:windowSoftInputMode="adjustResize">
-            <!-- Added to adjust layout when the keyboard is shown -->
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity android:name=".SplashActivity" android:exported="true">
+        <!-- Added to adjust layout when the keyboard is shown -->
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity android:name=".ChattingActivity" android:exported="true"/>
         <activity android:name=".VoiceInputActivity" android:exported="true"/>
