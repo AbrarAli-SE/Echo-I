@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_profile"
+        android:title="Profile"
+        android:icon="@drawable/profile" />
+    <item
+        android:id="@+id/nav_info"
+        android:title="App Info"
+        android:icon="@drawable/info" />
+    <item
+        android:id="@+id/nav_exit"
+        android:title="Exit"
+        android:icon="@drawable/exit" />
+</menu>

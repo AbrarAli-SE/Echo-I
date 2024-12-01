@@ -15,7 +15,8 @@
         <color name="button_pressed_color">#0288D1</color>
         <color name="cancel_button_color">#F44336</color> <!-- Cancel button color (red) -->
 
-
-
+        <color name="primary">#6200EE</color>
+        <color name="gray">#BDBDBD</color>
+<color name="primary_dark">#3700B3</color>
 </resources>
 
