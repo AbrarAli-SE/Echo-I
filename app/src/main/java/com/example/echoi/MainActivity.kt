@@ -10,6 +10,7 @@ import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.AnimationUtils
 import android.widget.ImageButton
@@ -17,13 +18,60 @@ import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var drawerLayout: DrawerLayout
+
     @SuppressLint("ObjectAnimatorBinding")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navigationView: NavigationView = findViewById(R.id.nav_view)
+
+        // Handle navigation item clicks
+        navigationView.setNavigationItemSelectedListener { item ->
+            val id = item.itemId
+            when (id) {
+                R.id.nav_profile -> {
+                    Log.d("MainActivity", "Profile selected")
+                    val intent = Intent(this, ProfileActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.nav_info -> {
+                    Log.d("MainActivity", "App Info selected")
+                    // Intent to InfoActivity
+                    val intent = Intent(this, AppInfoActivity::class.java)
+                    startActivity(intent)
+                    true
+                }
+
+
+                R.id.nav_exit -> {
+                    Log.d("MainActivity", "Exit selected")
+                    // Exit the app
+                    finish()
+                    true
+                }
+                else -> false
+            }
+        }
+
+        // Menu icon to open the drawer
+        val menuIcon: ImageView = findViewById(R.id.menu_icon)
+        menuIcon.setOnClickListener {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START)
+            } else {
+                drawerLayout.openDrawer(GravityCompat.START)
+            }
+        }
 
         // Initialize the ImageView
         val imageView: ImageView = findViewById(R.id.character_icon)
@@ -91,6 +139,14 @@ class MainActivity : AppCompatActivity() {
             Log.d("MainActivity", "Keyboard button clicked")
             val intent = Intent(this, ChattingActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START)
+        } else {
+            super.onBackPressed()
         }
     }
 }
