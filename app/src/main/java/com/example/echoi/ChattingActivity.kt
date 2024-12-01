@@ -1,8 +1,10 @@
 package com.example.echoi
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,14 +13,20 @@ import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.File
 
 class ChattingActivity : AppCompatActivity() {
     private lateinit var inputMessage: EditText
@@ -32,6 +40,11 @@ class ChattingActivity : AppCompatActivity() {
     private var listeningRunnable: Runnable? = null
     private var dotCount = 0
 
+    private val SHARED_PREFS = "sharedPrefs"
+    private val USER_NAME = "userName"
+    private val PROFILE_PIC_PATH = "profilePicPath"
+    private val MESSAGES_KEY = "messages"
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_interface)
@@ -40,11 +53,17 @@ class ChattingActivity : AppCompatActivity() {
         inputMessage = findViewById(R.id.input_message)
         sendButton = findViewById(R.id.send_button)
         chatRecyclerView = findViewById(R.id.chat_recycler_view)
+        val userPicture: ImageView = findViewById(R.id.userPicture)
+        val userNameTextView: TextView = findViewById(R.id.user_name)
 
         // Initialize ChatAdapter
-        chatAdapter = ChatAdapter()
+        chatAdapter = ChatAdapter(this)
         chatRecyclerView.adapter = chatAdapter
         chatRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Load saved data
+        loadProfileData(userPicture, userNameTextView)
+        loadMessages()  // Load messages after initializing chatAdapter
 
         // Initialize ApiClient
         apiClient = ApiClient()
@@ -104,7 +123,6 @@ class ChattingActivity : AppCompatActivity() {
             }
         }
 
-        // TextWatcher to change icon from mic to send
         inputMessage.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -117,6 +135,49 @@ class ChattingActivity : AppCompatActivity() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.RECORD_AUDIO), 1)
         }
+    }
+
+    private fun loadProfileData(userPicture: ImageView, userNameTextView: TextView) {
+        try {
+            val sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
+            val name = sharedPreferences.getString(USER_NAME, "User Name")
+            val profilePicPath = sharedPreferences.getString(PROFILE_PIC_PATH, "")
+
+            userNameTextView.text = name
+            if (!profilePicPath.isNullOrEmpty()) {
+                val file = File(profilePicPath)
+                if (file.exists()) {
+                    val bitmap = BitmapFactory.decodeFile(file.absolutePath)
+                    userPicture.setImageBitmap(bitmap)
+                    Log.d("ChattingActivity", "Profile loaded: Name - $name, Profile Pic Path - $profilePicPath")
+                } else {
+                    Log.w("ChattingActivity", "Profile Pic Path is invalid or file does not exist")
+                }
+            } else {
+                userPicture.setImageResource(R.drawable.abraralipic) // Default profile picture
+                Log.w("ChattingActivity", "Profile Pic Path is empty")
+            }
+        } catch (e: Exception) {
+            Log.e("ChattingActivity", "Error loading profile data", e)
+        }
+    }
+
+    private fun loadMessages() {
+        val sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
+        val json = sharedPreferences.getString(MESSAGES_KEY, null)
+        if (json != null) {
+            val type = object : TypeToken<List<Message>>() {}.type
+            val savedMessages: List<Message> = Gson().fromJson(json, type)
+            chatAdapter.addMessages(savedMessages)
+        }
+    }
+
+    private fun saveMessages(messages: List<Message>) {
+        val sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val json = Gson().toJson(messages)
+        editor.putString(MESSAGES_KEY, json)
+        editor.apply()
     }
 
     private fun startListening() {
@@ -165,6 +226,9 @@ class ChattingActivity : AppCompatActivity() {
             chatAdapter.addMessage(userMessage)
             chatRecyclerView.scrollToPosition(chatAdapter.itemCount - 1)
 
+            // Save messages
+            saveMessages(chatAdapter.getMessages())
+
             // Send user's message to the API
             apiClient.sendTextToApi(messageText) { response ->
                 runOnUiThread {
@@ -172,6 +236,10 @@ class ChattingActivity : AppCompatActivity() {
                         // Display API response
                         val assistantMessage = Message("Assistant", response)
                         chatAdapter.addMessage(assistantMessage)
+
+                        // Save messages
+                        saveMessages(chatAdapter.getMessages())
+
                         chatRecyclerView.scrollToPosition(chatAdapter.itemCount - 1)
                     } else {
                         Toast.makeText(this, "Failed to get response from API", Toast.LENGTH_SHORT).show()

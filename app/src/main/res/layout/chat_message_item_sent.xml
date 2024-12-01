@@ -29,7 +29,6 @@
         android:id="@+id/userPicture"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/abraralipic"
         android:contentDescription="User Picture"
         android:scaleType="centerCrop"
         android:background="@drawable/circular_image_background"

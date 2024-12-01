@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
+class ChatAdapter(private val chattingActivity: ChattingActivity) : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
 
     private val messages: MutableList<Message> = mutableListOf()
 
@@ -39,5 +39,15 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ChatViewHolder>() {
     fun addMessage(message: Message) {
         messages.add(message)
         notifyItemInserted(messages.size - 1)
+    }
+
+    fun addMessages(messages: List<Message>) {
+        this.messages.clear()
+        this.messages.addAll(messages)
+        notifyDataSetChanged()
+    }
+
+    fun getMessages(): List<Message> {
+        return messages
     }
 }
