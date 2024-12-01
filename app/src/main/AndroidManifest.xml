@@ -1,9 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permissions for internet access and audio recording -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Permissions for internet access, audio recording, and external storage access -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -23,12 +25,13 @@
             android:windowSoftInputMode="adjustResize"/>
 
         <activity android:name=".SplashActivity" android:exported="true">
-        <!-- Added to adjust layout when the keyboard is shown -->
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity android:name=".ProfileActivity"></activity>
+        <activity android:name=".AppInfoActivity"/>
         <activity android:name=".ChattingActivity" android:exported="true"/>
         <activity android:name=".VoiceInputActivity" android:exported="true"/>
     </application>

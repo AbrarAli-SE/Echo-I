@@ -1,137 +1,150 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/root_layout"
-    android:background="@drawable/backgroundgradient"
-    android:padding="24dp">
+    android:layout_height="match_parent">
 
-    <!-- Title Text: AI Buddy -->
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp"
-        android:text="Echo-I"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="24sp" />
+    <!-- Main content -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/root_layout"
+        android:background="@drawable/backgroundgradient"
+        android:padding="24dp">
 
-    <!-- Hamburger Menu Icon -->
-    <ImageView
-        android:id="@+id/menu_icon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="35dp"
-        android:padding="7dp"
-        android:src="@drawable/menu"
-        android:background="@drawable/manubackground"
-        android:contentDescription="Menu Icon"
-        android:elevation="4dp" />
+        <!-- Title Text: AI Buddy -->
+        <TextView android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"
+            android:text="Echo-I"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="24sp" />
 
-    <!-- Greeting Text -->
-    <TextView
-        android:id="@+id/greeting_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="224dp"
-        android:layout_marginEnd="21dp"
-        android:background="@drawable/gradientcolortextbackground"
-        android:padding="8dp"
-        android:text=" Hiii, Ali "
+        <!-- Hamburger Menu Icon -->
+        <ImageView android:id="@+id/menu_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="35dp"
+            android:padding="7dp"
+            android:src="@drawable/menu"
+            android:background="@drawable/manubackground"
+            android:contentDescription="Menu Icon"
+            android:elevation="4dp" />
 
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:elevation="4dp" />
-
-    <!-- Center Character Icon -->
-    <ImageView
-        android:id="@+id/character_icon"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/ai"
-        android:contentDescription="Character Icon"/>
-
-
-    <!-- Welcome Text -->
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/character_icon"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:text="Welcome Back"
-        android:textColor="#7A7A7A"
-        android:textSize="18sp"
-        android:elevation="4dp" />
-
-    <!-- Help Text -->
-    <TextView
-        android:id="@+id/help_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/welcome_text"
-        android:layout_centerHorizontal="true"
-        android:text="How Can I Help You Today?"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:elevation="4dp" />
-
-    <!-- Bottom Entry Bar with Voice and Keyboard Buttons -->
-    <LinearLayout
-        android:id="@+id/entry_bar"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginHorizontal="1dp"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/toggle_background"
-        android:padding="4dp"
-        android:elevation="4dp">
-
-        <!-- Voice Button -->
-        <ImageButton
-            android:id="@+id/voice_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/cr60b7a5bfe"
-            android:src="@drawable/mic"
-            android:contentDescription="Voice Button"
+        <!-- Greeting Text -->
+        <TextView
+            android:id="@+id/greeting_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="224dp"
+            android:layout_marginEnd="21dp"
+            android:background="@drawable/gradientcolortextbackground"
             android:padding="8dp"
-            android:elevation="2dp" />
+            android:text=" Hiii, Ali "
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:elevation="4dp" />
 
-        <!-- Keyboard Button -->
-        <ImageButton
-            android:id="@+id/keyboard_button"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/toggle_right_background"
-            android:src="@drawable/keyboard"
-            android:contentDescription="Keyboard Button"
-            android:padding="8dp"
-            android:elevation="2dp" />
-    </LinearLayout>
+        <!-- Center Character Icon -->
+        <ImageView
+            android:id="@+id/character_icon"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ai"
+            android:contentDescription="Character Icon"/>
 
-    <TextView
-        android:id="@+id/tap_to_text"
+        <!-- Welcome Text -->
+        <TextView
+            android:id="@+id/welcome_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/character_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="Welcome Back"
+            android:textColor="#7A7A7A"
+            android:textSize="18sp"
+            android:elevation="4dp" />
+
+        <!-- Help Text -->
+        <TextView
+            android:id="@+id/help_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/welcome_text"
+            android:layout_centerHorizontal="true"
+            android:text="How Can I Help You Today?"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:elevation="4dp" />
+
+        <!-- Bottom Entry Bar with Voice and Keyboard Buttons -->
+        <LinearLayout
+            android:id="@+id/entry_bar"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginHorizontal="1dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/toggle_background"
+            android:padding="4dp"
+            android:elevation="4dp">
+
+            <!-- Voice Button -->
+            <ImageButton
+                android:id="@+id/voice_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cr60b7a5bfe"
+                android:src="@drawable/mic"
+                android:contentDescription="Voice Button"
+                android:padding="8dp"
+                android:elevation="2dp" />
+
+            <!-- Keyboard Button -->
+            <ImageButton
+                android:id="@+id/keyboard_button"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/toggle_right_background"
+                android:src="@drawable/keyboard"
+                android:contentDescription="Keyboard Button"
+                android:padding="8dp"
+                android:elevation="2dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tap_to_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/entry_bar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-35dp"
+            android:text="Tap to Talk"
+            android:textColor="#7A7A7A"
+            android:textSize="18sp"
+            android:elevation="4dp" />
+    </RelativeLayout>
+
+    <!-- Navigation Drawer -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/entry_bar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-35dp"
-        android:text="Tap to Talk"
-        android:textColor="#7A7A7A"
-        android:textSize="18sp"
-        android:elevation="4dp" />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/gradient_background"
+        app:menu="@menu/drawer_menu" />
+
+</androidx.drawerlayout.widget.DrawerLayout>
